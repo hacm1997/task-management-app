@@ -38,4 +38,4 @@ Para iniciar el servidor de desarrollo y la aplicación, utilizar el siguiente c
 npm run dev
 ```
 
-Al iniciar la aplicación estará despleagada en el enlace http://localhost:5173, siempre con el puerto 5173 en caso de no haber especificado el puerto
+Al iniciar la aplicación estará despleagada en el enlace http://localhost:5173, siempre en el puerto 5173 (por defecto), en caso de no especificar el puerto
