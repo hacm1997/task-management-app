@@ -1,4 +1,4 @@
-# Proyecto React
+# Proyecto React - Task Management
 
 Aplicación frontend construída con consumo o alimentación del servicio: [https://github.com/hacm1997/task-managements]
 
