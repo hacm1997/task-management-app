@@ -1,0 +1,73 @@
+.navbar{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    padding-left: 120px;
+    padding-right: 120px;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.24);
+    padding-bottom: 20px;
+}
+.user{
+    border-radius: 100%;
+    background-color: #2fa0db;
+    color: white;
+    font-weight: 700;
+    font-size: 20px;
+    padding: 15px;
+    cursor: pointer;
+}
+.session_info{
+    position: absolute;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.24);
+    right: 2%;
+    top: 90px;
+}
+.session_info ul{
+    padding: 20px;
+    margin: 0;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+.session_info ul li{
+    list-style: none;
+}
+.logout{
+    display: flex;
+    align-items: center;
+    height: 40px;
+    transition: all;
+    transition-duration: 0.7s;
+    cursor: pointer;
+}
+.logout:hover{
+    background-color: #2fa0db;
+    color: white;
+    font-weight: 600;
+    transition-duration: 0.5s;
+}
+
+.listNavItems{
+    margin-left: -80px;
+    display: flex;
+    gap: 40px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+@media (max-width: 1048px){
+    .navbar{
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+@media (max-width: 970px){
+    .listNavItems{
+        display: none;
+    }
+}

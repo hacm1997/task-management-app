@@ -1,0 +1,20 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+.select{
+  max-width: 18rem;
+}
+
+.tox-edit-area iframe{
+  background-color: transparent !important;
+}
+.tox-statusbar{
+  background-color: transparent !important;
+}
+.tox .tox-statusbar{
+  display: none !important;
+}

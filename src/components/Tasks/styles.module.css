@@ -1,0 +1,121 @@
+.paginationsActive {
+  color: white;
+  border-radius: 100%;
+  /*width: 20px;*/
+  background-color: #2fa0db !important;
+  border: 1px solid;
+}
+
+.paginationsActive a {
+  font-size: 20px;
+}
+
+.paginationsBtns {
+  list-style: none;
+  display: flex;
+  border: 50px;
+  justify-content: center;
+}
+
+.paginationsBtns a {
+  padding: 8px;
+  cursor: pointer;
+  justify-content: space-between;
+}
+
+.paginationsBtns {
+  padding: 5px;
+  margin: 8px;
+  color: #5A5A5A;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.paginationControl {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.prevBtn{
+  font-weight: bold;
+  font-size: 20px;
+  color: #2fa0db !important;
+}
+.nextBtn{
+  font-weight: bold;
+  font-size: 20px;
+  color: #2fa0db !important;
+}
+
+.taskTable{
+  padding-left: 80px;
+  padding-right: 80px;
+}
+
+.cardContent{
+  margin-top: 40px;
+  padding-bottom: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+.filterCards{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  background-color: white;
+  padding-left: 20px;
+  padding-right: 20px;
+  cursor: pointer;
+  width: 300px;
+  height: 60px;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.24);
+  border-radius: 20px;
+}
+.activeCard{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  background-color: #83cdf5;
+  padding-left: 20px;
+  padding-right: 20px;
+  cursor: pointer;
+  color: white;
+  font-weight: 700;
+  width: 300px;
+  height: 60px;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.24);
+  border-radius: 20px;
+}
+
+.subMenuTask{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media (max-width: 767px) {
+  .visibleCol{
+    display: none;
+  }
+  .taskTable{
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: -50px;
+    padding-top: 50px;
+  }
+  .subMenuTask{
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    gap: 20px;
+  }
+}
