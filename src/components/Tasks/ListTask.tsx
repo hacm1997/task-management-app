@@ -1,7 +1,7 @@
 import { Button, Dropdown, IconButton, Menu, MenuButton, MenuItem, Stack, Table } from '@mui/joy'
 import { useEffect, useState } from 'react'
 import { getTasks } from '../../services/task/getTasks'
-import { TaksType } from './types';
+import { TaksDetailType, TaksType } from './types';
 import { CloseRounded, MoreVert, SkipNextRounded, SkipPreviousRounded } from '@mui/icons-material'
 import { format } from 'date-fns'
 import { es } from 'date-fns/locale'
@@ -15,6 +15,7 @@ import { toast } from 'sonner';
 import { deleteTask } from '../../services/task/deleteTask';
 import { changeCompelteTaskStatus } from '../../services/task/taskStatus';
 import { BarSearch } from '../utils/BarSearch';
+import { TaskDetailModal } from '../utils/TaskDetailModal';
 
 interface Props {
     filterCompleted: number | null
@@ -26,6 +27,15 @@ export const ListTask = ({ filterCompleted }: Props) => {
     const [totalPage, setTotalPage] = useState(1)
     const [showAlert, setShowAlert] = useState(false)
     const [showModalForm, setShowModalForm] = useState(false)
+    const [showModalDetails, setShowModalDetail] = useState(false)
+    const [taskDeatils, setTaskDetail] = useState<TaksDetailType>({
+        title: '',
+        description: '',
+        due_date: '',
+        is_completed: 0,
+        created_at: '',
+        updated_at: ''
+    })
     const [taskId, setTaskId] = useState(0)
     const [isCreate, setIsCreate] = useState(false)
     const [refreshData, setRefreshData] = useState(false)
@@ -65,6 +75,11 @@ export const ListTask = ({ filterCompleted }: Props) => {
         setShowModalForm(true)
     }
 
+    const handleShowDetails = (task: TaksType) => {
+        setTaskDetail(task)
+        setShowModalDetail(true)
+    }
+
     const handerDeleteTask = () => {
         deleteTask(taskId).then((res) => {
             if (res.message === "Unauthorized") {
@@ -74,7 +89,7 @@ export const ListTask = ({ filterCompleted }: Props) => {
             }
         }).catch(error => {
             console.error(error)
-            toast.error('Ha ocurrido un error, no se puedo eliminar la tarea')
+            toast.error('No se puedo eliminar la tarea o no tiene permisos para realizar esta acción')
         })
     }
 
@@ -116,6 +131,7 @@ export const ListTask = ({ filterCompleted }: Props) => {
                             <th style={{ textAlign: 'center' }}>Finaliza</th>
                             <th style={{ textAlign: 'center' }}>Completada</th>
                             <th className={styles.visibleCol} style={{ textAlign: 'center' }}>Última modificación</th>
+                            <th className={styles.visibleCol} style={{ textAlign: 'center' }}>Creador</th>
                             <th style={{ textAlign: 'center' }}>Acción</th>
                         </tr>
                     </thead>
@@ -134,6 +150,9 @@ export const ListTask = ({ filterCompleted }: Props) => {
                                 <td className={styles.visibleCol} style={{ textAlign: 'center' }}>
                                     {format(new Date(item.updated_at), 'dd MMM yyyy - hh:mm aaaa', { locale: es })}
                                 </td>
+                                <td className={styles.visibleCol} style={{ textAlign: 'center' }}>
+                                    {item.user?.name}
+                                </td>
                                 <td style={{ textAlign: 'center' }}>
                                     <Dropdown>
                                         <MenuButton
@@ -150,6 +169,7 @@ export const ListTask = ({ filterCompleted }: Props) => {
                                                 <ButtonGroupActionTags
                                                     handleShowAlertDialog={() => showDeleteMessage(item.id, item.title)}
                                                     handleShowEdit={() => handleShowTaskEditor(item.id)}
+                                                    handleShowDetails={() => { handleShowDetails(item) }}
                                                     iconDisableBlog={true}
                                                     handleCompleteStatus={() => { handerTaskStatus(item.id, item.title, true) }}
                                                     handleNotCompleteStatus={() => { handerTaskStatus(item.id, item.title, false) }}
@@ -184,6 +204,11 @@ export const ListTask = ({ filterCompleted }: Props) => {
                 handleShowAlertDialog={() => setShowModalForm(!showModalForm)}
                 isCreate={isCreate}
                 taskId={taskId}
+            />
+            <TaskDetailModal
+                showAlertDialog={showModalDetails}
+                handleShowAlertDialog={() => setShowModalDetail(!showModalDetails)}
+                task={taskDeatils}
             />
             <AlertDialogModal
                 handleDeleteTask={() => {

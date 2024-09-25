@@ -15,7 +15,7 @@ export const login = async (email: string, password: string) => {
     return data;
   } catch (error) {
     console.error('Error during login:', error);
-    throw new Error('Error. Please verify your credentials.');
+    throw new Error('Error. usuario y/o contraseña incorrecta');
   }
 };
 

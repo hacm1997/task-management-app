@@ -3,3 +3,34 @@
     align-items: center;
     gap: 10px;
 }
+
+.registerBtn{
+    color: #2fa0db !important;
+    border: 1px solid #2fa0db !important;
+    background-color: white !important;
+    transition: all;
+    transition-duration: 0.5s;
+}
+.registerBtn:hover{
+    color: #2fa0db;
+    border: 1px solid #67d1bc;
+    background-color: white;
+}
+
+@media (max-width: 1500px) {
+    .formStyle{
+        width: 40% !important;
+    }
+}
+
+@media (max-width: 1070px) {
+    .formStyle{
+        width: 60% !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .formStyle{
+        width: 90% !important;
+    }
+}

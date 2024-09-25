@@ -3,7 +3,7 @@ import styles from './styles.module.css'
 import { login } from "../services/auth.service";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { Toaster } from "sonner";
+import { toast, Toaster } from "sonner";
 
 export const LoginComponent = () => {
     const [email, setEmail] = useState('');
@@ -18,6 +18,8 @@ export const LoginComponent = () => {
             // redirect to dashboard
             navigate('/dashboard');
         } catch (error: any) {
+            console.log(error)
+            toast.error(error.message)
             console.error(error.message);
         }
     };

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { GeneralLayout } from './DashboardLayout/GeneralLayout';
-import { ListTask } from './Tasks/ListTask';
-import { Filters } from './Tasks/Filters';
+import { GeneralLayout } from '../DashboardLayout/GeneralLayout';
+import { ListTask } from '../Tasks/ListTask';
+import { Filters } from '../Tasks/Filters';
 
 const Dashboard: React.FC = () => {
     const [filterCompleted, setFilterCompelted] = useState<number | null>(null)

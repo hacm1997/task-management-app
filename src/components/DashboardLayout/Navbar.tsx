@@ -30,7 +30,7 @@ export const Navbar = () => {
     }, []);
     return (
         <div className={styles.navbar}>
-            <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+            <div onClick={() => navigate('/dashboard')} style={{ display: 'flex', gap: '10px', alignItems: 'center', cursor: 'pointer' }}>
                 <img style={{ width: '50px' }} src="/task-logo.png" alt="App Logo" />
                 <Typography sx={{ fontSize: '18px' }}>
                     Task <br />Management<br />
@@ -38,7 +38,7 @@ export const Navbar = () => {
             </div>
 
             <div className={styles.listNavItems}>
-                <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+                <div onClick={() => navigate('/dashboard')} style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
                     <FaTasks color='#83cdf5' />
                     <p style={{ fontSize: '14px' }}>Taks</p>
                 </div>
@@ -81,6 +81,12 @@ export const Navbar = () => {
                         <ul>
                             <li>Hola {user.name}!</li>
                             <li>{user.email}</li>
+                            {user.role === 'admin' &&
+                                <li style={{ cursor: 'pointer', textDecoration: 'underline' }} onClick={() => navigate('/dashboard/all-users')}>Ver usuarios</li>
+                            }
+                            {user.role === 'admin' &&
+                                <li style={{ cursor: 'pointer', textDecoration: 'underline' }} onClick={() => navigate('/dashboard/create-user')}>Crear usuario</li>
+                            }
                         </ul>
                         <div className={styles.logout} style={{ display: 'flex', justifyContent: 'center' }} onClick={handleLogout}>
                             <a style={{ textAlign: 'center', cursor: 'pointer' }}>
