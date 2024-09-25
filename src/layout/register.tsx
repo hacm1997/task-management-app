@@ -35,7 +35,6 @@ export const RegisterComponent = () => {
             }
         } else {
             setDisabled(false)
-            console.log('hola 534')
             toast.warning('Las contraseñas no coinciden!')
         }
     };
